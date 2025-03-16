@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="global.css" />
+		<title>exam2</title>
+	</head>
+	<body>
+		<div class="layout-2">
+			<div class="back-home" id="back-to-home">
+				<i class="arrow left back-home-arrow"></i>
+			</div>
+			<div class="body">
+				<div class="pin-div">
+					<img
+						src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						alt="logo"
+						width="35"
+						height="35"
+						class="image-logo"
+					/>
+					<p>ใส่ PIN เพื่อดำเนินการ</p>
+					<div class="pin-container">
+						<div class="pin-dot"></div>
+						<div class="pin-dot"></div>
+						<div class="pin-dot"></div>
+						<div class="pin-dot"></div>
+						<div class="pin-dot"></div>
+						<div class="pin-dot"></div>
+					</div>
+					<a href="#" class="forgot-password">
+						<p>ลืมรหัส PIN <i class="arrow-forgot right"></i></p>
+					</a>
+				</div>
+				<div class="keypad" id="keypad"></div>
+				<script>
+					const correctPin = "147369";
+					let enteredPin = "";
+
+					function updatePin() {
+						const dots = document.querySelectorAll(".pin-dot");
+						dots.forEach((dot, index) => {
+							dot.classList.toggle("pin-filled", index < enteredPin.length);
+						});
+					}
+					function enterPin(num) {
+						if (enteredPin.length < 6) {
+							enteredPin += num;
+							updatePin();
+						}
+
+						if (enteredPin.length === 6) {
+							verifyPin();
+						}
+					}
+
+					function verifyPin() {
+						if (enteredPin === correctPin) {
+							alert("รหัสถูกต้อง!");
+							window.location.href = "exam3.html";
+						} else {
+							alert("รหัสไม่ถูกต้อง!");
+							enteredPin = "";
+							updatePin();
+						}
+					}
+
+					function deletePin() {
+						enteredPin = enteredPin.slice(0, -1);
+						updatePin();
+					}
+					const keypad = document.getElementById("keypad");
+					for (let i = 1; i <= 9; i++) {
+						const btn = document.createElement("button");
+						btn.textContent = i;
+						btn.onclick = () => enterPin(i);
+						keypad.appendChild(btn);
+					}
+
+					const emptyBtn = document.createElement("button");
+					keypad.appendChild(emptyBtn);
+
+					const zeroBtn = document.createElement("button");
+					zeroBtn.textContent = "0";
+					zeroBtn.onclick = () => enterPin(0);
+					keypad.appendChild(zeroBtn);
+
+					const deleteBtn = document.createElement("button");
+					deleteBtn.textContent = "⌫";
+					deleteBtn.onclick = deletePin;
+					keypad.appendChild(deleteBtn);
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

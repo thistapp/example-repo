@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="global.css" />
+		<title>Example_one</title>
+	</head>
+	<body>
+		<!-- เช็คเงื่อนไขเบอรืโทรศัพท์ -->
+		<script>
+			function validatePhone() {
+				const phongNumber = document.getElementById("phoneInput").value;
+				const errorMessage = document.getElementById("errorMessage");
+				console.log(phongNumber.length);
+
+				if (phongNumber === "") {
+					errorMessage.textContent = "กรุณากรอกเบอร์โทรศัพท์";
+					return;
+				}
+				if (phongNumber.length < 10) {
+					errorMessage.textContent = "กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก";
+					return;
+				}
+				if (phongNumber !== "0943135555") {
+					errorMessage.textContent = "เข้าสู่ระบบไม่สำเร็จ";
+					return;
+				}
+
+				window.location.href = "exam2.html";
+			}
+		</script>
+		<div class="layout-1">
+			<div class="header">
+				<div class="title-div">
+					<div class="icon-arrow-left">&#8592;</div>
+					<div class="title">
+						<p>เชื่อมต่อ</p>
+						<p>ด้วยหมายเลขโทรศัพท์มือถือ</p>
+					</div>
+				</div>
+				<div class="body-div">
+					<p class="title-input">เบอร์โทรศัพท์</p>
+					<input
+						type="tel"
+						name="phoneInput"
+						id="phoneInput"
+						class="phoneInput"
+						placeholder="กรุณากรอกหมายเลขโทรศัพท์"
+						maxlength="10"
+					/>
+					<p id="errorMessage"></p>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="privacy-div">
+					<span
+						>โดยกดปุ่ม "ตกลง" เพื่อยอมรับ
+						<a href="#">
+							ข้อกำหนดและเงื่อนไขรวมทั้ง
+							รับทราบนโยบายคุ้มครองข้อมูลความเป็นส่วนบุคคล
+						</a></span
+					>
+				</div>
+				<button onclick="validatePhone()" class="button-confirm">
+					<span class="icon-wrapper"
+						><i class="arrow right arrow-class"></i></span
+					>ตกลง
+				</button>
+			</div>
+		</div>
+	</body>
+</html>

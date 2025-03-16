@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="global.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="">
+			<p>ให้เรียงตัวเลขจากน้อยไปมาก โดยอธิบายเป็นลำดับขั้นตอน</p>
+			<p>8 9 1 7 3 0 2 5 4 6</p>
+			<br />
+			<p>คำตอบ</p>
+			<p id="result-sort"></p>
+			<script>
+				const number = [8, 9, 1, 7, 3, 0, 2, 5, 4, 6];
+				number.sort(function (a, b) {
+					return a - b;
+				});
+				document.getElementById("result-sort").innerHTML = number;
+			</script>
+			<p>ขั้นตอนการทำงาน</p>
+			<ol>
+				<li>สร้าง object ตัวเลขสำหรับการ sort</li>
+				<li>
+					ใช้ฟังก์ชัน .sort ในการ sort ตัวเลขโดยมีค่า a และ b
+					ในการเปรียบเทียบตำแหน่งในการคำนวน
+				</li>
+				<li>
+					โดยจะทำการให้ค่า a และ ค่า b มาลบกัน เพื่อให้รู้เลขของแต่ละตำแหน่ง
+					เช่น
+					<ul>
+						<li>8 - 9 = -1 → 8 ควรอยู่ก่อน 9</li>
+						<li>1 - 7 = -6 → 1 ควรอยู่ก่อน 7</li>
+						<li>0 - 2 = -2 → 0 ควรอยู่ก่อน 2</li>
+						<li>7 - 3 = 4 → 3 ควรอยู่ก่อน 7</li>
+					</ul>
+					ทำซ้ำๆจนกว่าข้อมูลทั้งหมดเรียงครบ
+				</li>
+			</ol>
+		</div>
+	</body>
+</html>
